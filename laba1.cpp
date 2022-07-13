@@ -15,11 +15,19 @@ struct Date{
 					
 				};
 				
-				void set() {      //date 
-//				(1<Date.day<31) ? true : false;
+				void set(Date& date, int year, int month, int day) {      //date 
+			if (year >= 1 && year <= 2100)
+			date.year=year;
+			if (month >= 1 && month <= 12)
+			date.month=month;
+			if (day >= 1 && day <= 31)
+			date.day = day;
 			}
-									void set() {		//time 
-							
+									void set(Time& time, int hour, int minute) {		//time 
+									if (hour>= 0 && hour <= 23)
+									time.hour=hour;
+									if (minute >= 0 && minute <= 59)
+									time.minute=minute;
 								}
 									
 									
