@@ -31,9 +31,12 @@ struct Date{
 								}
 									
 									
-				void print(){		//date 
+				void print(const Date&date){		//date 
+				cout << date.day << date.month << date.year << endl;
 			}
-									void print()	//time 
+									void print(const Time&time){	//time 
+									cout << time.hour << time.minute << endl;
+								}
 									
 									
 				void read(Date& date)	{		//date
@@ -59,5 +62,11 @@ struct Date{
 								}
 int main(int argc, char** argv) {
 	
-	return 0;
+	Time t;
+	read(t);
+	print(t);
+				Date d;
+				read(d);
+				print(d);
+	
 }
