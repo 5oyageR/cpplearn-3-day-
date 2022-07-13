@@ -46,6 +46,7 @@ struct Date{
 				cout << "type the year:" << endl; 
 				int year;
 				cin >> year;
+				set (date, year, month, day);
 			}
 									void read(Time& time)	{	//time
 									 cout << "type the minute" << endl;
@@ -54,6 +55,7 @@ struct Date{
 									 cout << "type the hour" << endl;
 									 int hour;
 									 cin >> hour; 
+									 set (time, minute, hour);
 								}
 int main(int argc, char** argv) {
 	
