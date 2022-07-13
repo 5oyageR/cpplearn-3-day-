@@ -36,21 +36,24 @@ struct Date{
 									void print()	//time 
 									
 									
-				void read()	{		//date
-				Date d1;
+				void read(Date& date)	{		//date
 				cout << "type the day:" << endl; 
-				cin >> d1.day;
-				cout << "type the month:" << endl; 
-				cin >> d1.month;
+				int day;
+				cin >> day;
+				cout << "type the month:" << endl;
+				int month; 
+				cin >> month;
 				cout << "type the year:" << endl; 
-				cin >> d1.year;
+				int year;
+				cin >> year;
 			}
-									void read()	{	//time
-									 Time t1;
+									void read(Time& time)	{	//time
 									 cout << "type the minute" << endl;
-									 cin >> t1.minute; 
+									 int minute;
+									 cin >> minute; 
 									 cout << "type the hour" << endl;
-									 cin >> t1.hour; 
+									 int hour;
+									 cin >> hour; 
 								}
 int main(int argc, char** argv) {
 	
