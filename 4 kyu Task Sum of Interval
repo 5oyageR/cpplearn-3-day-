@@ -1,0 +1,69 @@
+//sumIntervals( [
+   [1, 2],
+   [6, 10],
+   [11, 15]
+] ) => 9
+
+sumIntervals( [
+   [1, 4],
+   [7, 10],
+   [3, 5]
+] ) => 7
+
+sumIntervals( [
+   [1, 5],
+   [10, 20],
+   [1, 6],
+   [16, 19],
+   [5, 11]
+] ) => 19
+
+sumIntervals( [
+   [0, 20],
+   [-100000000, 10],
+   [30, 40]
+] ) => 100000030
+
+#include <iostream>
+#include <vector>
+#include <algorithm>
+#include <cmath>
+#include <utility>
+
+using namespace std;
+
+//ostream& operator<<(ostream& out, const vector<pair<int, int>>& rhs)
+//{
+//    for (auto& i: rhs)
+//    {
+//        out << "{" <<i.first << ", " << i.second << "}";
+//    }
+//    return out;
+//}
+
+int sum_intervals(vector<pair<int, int>>& data) {
+    sort(data.begin(), data.end());
+    for (int i = 0; i < static_cast<int>(data.size()) - 1; ++i)
+    {
+        if (data[i].first == data[i + 1].first && data[i].second <= data[i + 1].second)
+        {
+            data.erase(data.begin() + i);
+            --i;
+        }
+        else if (data[i].first < data[i + 1].first && data[i].second <= data[i + 1].second && data[i].second > data[i + 1].first)
+        {
+            data[i].second = data[i + 1].second;
+            data.erase(data.begin() + i + 1);
+            --i;
+        }
+        else if (data[i].first < data[i + 1].first && data[i].second > data[i + 1].second)
+        {
+            data.erase(data.begin() + i + 1);
+            --i;
+        }
+    }
+    int sum = 0;
+    for (auto pair: data)
+        sum += pair.second - pair.first;
+    return sum;
+}
