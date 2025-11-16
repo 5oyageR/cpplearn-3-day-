@@ -1,0 +1,33 @@
+// Examples: 
+"(){}[]"   =>  True
+"([{}])"   =>  True
+"(}"       =>  False
+"[(])"     =>  False
+"[({})](]" =>  False
+
+#include <iostream>
+#include <map>
+#include <stack>
+
+using namespace std;
+
+bool valid_braces(std::string braces) 
+{
+    map<char, char> dataBrackets = {{'(',')'}, {'{','}'}, {'[', ']'}};
+    stack<char> solve;
+    for (auto it = braces.begin(); it != braces.end(); ++it)
+    {
+        if (*it == '(' || *it == '{' || *it == '[')
+        {
+            solve.push(*it);
+        }
+        else {
+            if (dataBrackets[solve.top()] == *it) {
+                solve.pop();
+            }
+          else
+              return false;
+        }
+    }
+  return solve.empty();
+}
