@@ -1,0 +1,42 @@
+//Даны две дроби:
+a/b c/d
+​
+Найдите их разность.
+
+Для решения этой задачи перегрузите операцию вычитания в собственном классе Fraction.
+
+
+#include <iostream>
+
+class Fraction{
+public:
+    Fraction() : x(0), y(0) {}
+    Fraction(long long int x, long long int y) : x(x), y(y) {}
+    const Fraction operator-(const Fraction& other) const;
+    void read();
+    void show() const {std::cout << x << "/" << y ;}
+private:
+    long long int x;
+    long long int y;
+};
+
+void Fraction::read() {
+    scanf("%lld/%lld", &x, &y);
+}
+
+const Fraction Fraction::operator-(const Fraction& other) const {
+    return Fraction(x * other.y - other.x * y, y * other.y);
+}
+
+int main(){
+    Fraction a;
+    a.read();
+    Fraction b;
+    b.read();
+    Fraction c;
+    c = a - b;
+    c.show();
+    return 0;
+}
+
+
