@@ -1,0 +1,41 @@
+//
+
+Создайте класс Fraction, который будет хранить дробь вида a/b c/d
+
+метод show(), который выводит дробь через символ /;
+перегруженную операцию + для сложения дробей;
+метод read(), позволяющий считать дробь.
+С использованием этого класса решите задачу сложения двух дробей.
+
+#include <iostream>
+
+class Fraction{
+public:
+    Fraction() : x(0), y(0) {}
+    Fraction(long long int x, long long int y) : x(x), y(y) {}
+    const Fraction operator+(const Fraction& other) const;
+    void read();
+    void show() const {std::cout << x << "/" << y ;}
+private:
+    long long int x;
+    long long int y;
+};
+
+void Fraction::read() {
+    scanf("%lld/%lld", &x, &y);
+}
+
+const Fraction Fraction::operator+(const Fraction& other) const {
+    return Fraction(x * other.y + other.x * y, y * other.y);
+}
+
+int main(){
+    Fraction a;
+    a.read();
+    Fraction b;
+    b.read();
+    Fraction c;
+    c = a + b;
+    c.show();
+    return 0;
+}
